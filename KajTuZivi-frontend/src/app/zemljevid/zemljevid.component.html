@@ -1,6 +1,13 @@
-<p>
-  zemljevid works!
-</p>
+<h1>Kaj tu živi</h1>
+<md-input-container>
+  <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+</md-input-container>
+
+<md-autocomplete #auto="mdAutocomplete">
+  <md-option *ngFor="let state of filteredStates | async" [value]="state">
+    {{ state }}
+  </md-option>
+</md-autocomplete>
 <iframe
  width="600" height="450" frameborder="0" style="border:0"
  src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJYYOWXuckZUcRZdTiJR5FQOc&key=AIzaSyCenChTJmcIqew_UGbYQm7PXosuUHTuiOo" allowfullscreen>
