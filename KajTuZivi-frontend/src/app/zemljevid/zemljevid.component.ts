@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, Output} from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-zemljevid',
@@ -7,7 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ZemljevidComponent implements OnInit {
 
-  constructor() { }
+  stateCtrl: FormControl;
+
+  lat = 51.678418;
+  lng = 7.809007;
 
   ngOnInit() {
   }

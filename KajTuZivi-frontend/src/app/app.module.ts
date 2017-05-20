@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
@@ -10,21 +10,38 @@ import { ZemljevidComponent } from './zemljevid/zemljevid.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { VnosPodatkovComponent } from './vnos-podatkov/vnos-podatkov.component';
+import { KvadrantPodrobnoComponent } from './zemljevid/kvadrant-podrobno/kvadrant-podrobno.component';
+import { VrstePodrobnoComponent } from './zemljevid/vrste-podrobno/vrste-podrobno.component';
+import { PodrobnostiComponent } from './podrobnosti/podrobnosti.component';
+import { MdDataTableModule } from 'ng2-md-datatable';
+import { AgmCoreModule } from 'angular2-google-maps/core';
+import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ZemljevidComponent,
-    VnosPodatkovComponent
+    VnosPodatkovComponent,
+    KvadrantPodrobnoComponent,
+    VrstePodrobnoComponent,
+    PodrobnostiComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
     MaterialModule,
     BrowserAnimationsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    MdDataTableModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBmu0956wWjk0CV6fMzVNvcceqE13bjgiY'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

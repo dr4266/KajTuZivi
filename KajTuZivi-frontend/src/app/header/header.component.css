@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+}
+
+.search {
+  align-items: flex-end;
+  margin-top: 18px;
+  margin-left: auto;
+}
