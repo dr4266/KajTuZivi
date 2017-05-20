@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { ZemljevidComponent } from './zemljevid/zemljevid.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { VnosPodatkovComponent } from './vnos-podatkov/vnos-podatkov.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ZemljevidComponent
+    ZemljevidComponent,
+    VnosPodatkovComponent
   ],
   imports: [
     BrowserModule,
