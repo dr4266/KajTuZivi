@@ -6,10 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { ZemljevidComponent } from './zemljevid/zemljevid.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { VnosPodatkovComponent } from './vnos-podatkov/vnos-podatkov.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ZemljevidComponent,
+    VnosPodatkovComponent
   ],
   imports: [
     BrowserModule,
@@ -17,6 +23,8 @@ import { AppComponent } from './app.component';
     HttpModule,
     MaterialModule,
     BrowserAnimationsModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
