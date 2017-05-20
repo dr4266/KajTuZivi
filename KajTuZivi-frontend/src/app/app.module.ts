@@ -6,10 +6,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { ZemljevidComponent } from './zemljevid/zemljevid.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ZemljevidComponent
   ],
   imports: [
     BrowserModule,
@@ -17,6 +21,8 @@ import { AppComponent } from './app.component';
     HttpModule,
     MaterialModule,
     BrowserAnimationsModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
