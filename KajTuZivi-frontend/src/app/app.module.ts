@@ -13,6 +13,7 @@ import { VnosPodatkovComponent } from './vnos-podatkov/vnos-podatkov.component';
 import { KvadrantPodrobnoComponent } from './zemljevid/kvadrant-podrobno/kvadrant-podrobno.component';
 import { VrstePodrobnoComponent } from './zemljevid/vrste-podrobno/vrste-podrobno.component';
 import { PodrobnostiComponent } from './podrobnosti/podrobnosti.component';
+import { MdDataTableModule } from 'ng2-md-datatable';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PodrobnostiComponent } from './podrobnosti/podrobnosti.component';
     BrowserAnimationsModule,
     RouterModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MdDataTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

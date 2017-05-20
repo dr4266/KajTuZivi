@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, Output} from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import 'rxjs/add/operator/startWith';
@@ -80,6 +80,7 @@ export class ZemljevidComponent implements OnInit {
   }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }
