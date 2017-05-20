@@ -10,12 +10,18 @@ import { ZemljevidComponent } from './zemljevid/zemljevid.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { VnosPodatkovComponent } from './vnos-podatkov/vnos-podatkov.component';
+import { KvadrantPodrobnoComponent } from './zemljevid/kvadrant-podrobno/kvadrant-podrobno.component';
+import { VrstePodrobnoComponent } from './zemljevid/vrste-podrobno/vrste-podrobno.component';
+import { PodrobnostiComponent } from './podrobnosti/podrobnosti.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ZemljevidComponent,
-    VnosPodatkovComponent
+    VnosPodatkovComponent,
+    KvadrantPodrobnoComponent,
+    VrstePodrobnoComponent,
+    PodrobnostiComponent
   ],
   imports: [
     BrowserModule,
