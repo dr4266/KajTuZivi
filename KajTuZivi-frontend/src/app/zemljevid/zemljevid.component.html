@@ -1,14 +1,19 @@
-<h1>Kaj tu živi</h1>
-<md-input-container>
-  <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
-</md-input-container>
-
-<md-autocomplete #auto="mdAutocomplete">
-  <md-option *ngFor="let state of filteredStates | async" [value]="state">
-    {{ state }}
-  </md-option>
-</md-autocomplete>
+<div class="col-xs-12">
+  <div class="col-md-6">
+    <h1>Kaj tu živi</h1>
+  </div>
+  <div class="col-md-6 search">
+    <md-input-container>
+      <input mdInput placeholder="Iskanje..." [mdAutocomplete]="auto" [formControl]="stateCtrl">
+    </md-input-container>
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let state of filteredStates | async" [value]="state">
+        {{ state }}
+      </md-option>
+    </md-autocomplete>
+  </div>
+</div>
 <iframe
- width="600" height="450" frameborder="0" style="border:0"
+ width="1000" height="600" frameborder="0" style="border:0"
  src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJYYOWXuckZUcRZdTiJR5FQOc&key=AIzaSyCenChTJmcIqew_UGbYQm7PXosuUHTuiOo" allowfullscreen>
 </iframe>
