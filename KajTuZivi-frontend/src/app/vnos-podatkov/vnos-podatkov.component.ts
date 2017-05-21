@@ -40,7 +40,6 @@ export class VnosPodatkovComponent implements OnInit {
           }
         );
       });
-      this.kvadrant = podatkiService.getKvadrant1();
   }
 
   ngOnInit() {

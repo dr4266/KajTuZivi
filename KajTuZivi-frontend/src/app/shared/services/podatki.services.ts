@@ -6,6 +6,7 @@ import {Config} from '../config/env.config';
 export class PodatkiService {
 
   public kvadrant: any;
+  
 
   constructor(private http: Http) {}
 

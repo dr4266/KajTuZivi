@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { PodatkiService } from '../../shared/services/podatki.services';
 
 @Component({
@@ -8,7 +8,7 @@ import { PodatkiService } from '../../shared/services/podatki.services';
   providers: [PodatkiService]
 })
 export class VrstePodrobnoComponent implements OnInit {
-  data: any;
+  @Input() data: any;
   vrsta: any;
 
   constructor(private PodatkiService: PodatkiService) { }
