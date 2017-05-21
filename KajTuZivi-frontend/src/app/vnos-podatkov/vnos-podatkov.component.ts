@@ -18,6 +18,7 @@ export class VnosPodatkovComponent implements OnInit {
   public error: any;
   public filteredVrste: any;
   public vrstaCtrl: FormControl;
+  public kvadrant: any;
 
   constructor(private podatkiService: PodatkiService,
               private speciesService: SpeciesService) {
@@ -37,7 +38,7 @@ export class VnosPodatkovComponent implements OnInit {
           }
         );
       });
-
+      this.kvadrant = podatkiService.getKvadrant1();
   }
 
   ngOnInit() {
@@ -47,13 +48,12 @@ export class VnosPodatkovComponent implements OnInit {
     this.error = null;
   }
 
-  onSubmit(f: any){
+  onSubmit(f: any) {
     this.loading = true;
     this.success = false;
     this.error = null;
 
     f.value.kanonicno_ime = this.vrstaCtrl.value;
-    f.value.biolog = parseInt(f.value.biolog);
 
   	this.podatkiService.vstaviPopis(f.value).subscribe(
   		response => {

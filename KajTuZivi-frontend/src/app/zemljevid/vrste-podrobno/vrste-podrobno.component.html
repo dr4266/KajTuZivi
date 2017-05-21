@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" (recipeSelected)="onSelected()">
   <div class="panel-heading">Panel heading</div>
   <table class="table">
     <tr>
@@ -10,8 +10,8 @@
       <th>kvadrant</th>
     </tr>
     <tr>
-      <div *ngFor="let element of elements">
-        <td></td>
+      <div *ngFor="let element of data">
+        <td>element.vrsta</td>
       </div>
     </tr>
   </table>
