@@ -1,7 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormControl} from '@angular/forms'
 import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral } from 'angular2-google-maps/core';
 import { PodatkiService } from '../shared/services/podatki.services';
 import { HeaderComponent } from '../header/header.component';
+import { VrstePodrobnoComponent } from './vrste-podrobno/vrste-podrobno.component'
 
 @Component({
   selector: 'app-zemljevid',
@@ -11,6 +13,9 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class ZemljevidComponent implements OnInit {
  @ViewChild(HeaderComponent) header: HeaderComponent;
+ @ViewChild(VrstePodrobnoComponent) vrstePodrobno: VrstePodrobnoComponent;
+ vrstePodrobnoData: any = 'nekaj';
+ headerCtrl: FormControl;
   lat = 45.344760;
   lng = 13.414000;
   public table: any[] = [];
@@ -28,13 +33,36 @@ export class ZemljevidComponent implements OnInit {
   spremembaY = 0;
   spremembaX = 0.09;
 
-  constructor(private PodatkiService: PodatkiService) {}
+  constructor(private podatkiService: PodatkiService) {
+
+  }
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((position) => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
     });
+    console.log(this.vrstePodrobno)
+    console.log(this.header)
+    //this.vrstePodrobnoData = this.vrstePodrobno.data
+    this.headerCtrl = this.header.vrstaCtrl;
+    this.headerCtrl.valueChanges.subscribe(
+      (text: String) => {
+        this.podatkiService.getVrstaIme(text).subscribe(
+          response => {
+            if (response != '' || response.length >  0) {
+              console.log('not')
+              this.prikaziVrstePodrobno = true;
+              this.vrstePodrobnoData = response;
+              //this.vrstePodrobno.data = this.vrstePodrobnoData
+            }
+
+            console.log(this.vrstePodrobno)
+          }, error => {
+            console.log(error);
+          }
+        );
+      });
     for (let i = 0; i < 17; i++) {
       for (let j = 0; j < 25; j++) {
         const paths: Array<LatLngLiteral> = [
@@ -53,10 +81,10 @@ export class ZemljevidComponent implements OnInit {
   }
 
   onMapClick(id: number) {
-    console.log(this.header)
+
     this.kvadrant = id;
     this.prikaziKvadrant = true;
-    this.PodatkiService.getKvadrant(id).subscribe(
+    this.podatkiService.getKvadrant(id).subscribe(
       response => {
         this.kvadrantPodatki = response;
         if (response.length === 0) {
@@ -68,7 +96,5 @@ export class ZemljevidComponent implements OnInit {
     );
   }
 
-  onVnesi() {
-    this.PodatkiService.setKvadrant(this.kvadrant);
-  }
+
 }
