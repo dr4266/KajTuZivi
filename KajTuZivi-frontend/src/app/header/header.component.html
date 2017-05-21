@@ -4,14 +4,16 @@
   <h1>Kaj tu živi</h1>
 
   <div class="search">
-    <md-input-container>
-      <input mdInput placeholder="Iskanje..." [mdAutocomplete]="auto" [formControl]="dataCtrl">
-    </md-input-container>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <md-input-container>
+        <input mdInput placeholder="Iskanje..." [mdAutocomplete]="auto" [formControl]="vrstaCtrl" ngModel name="kanonicno_ime" ngDefaultControl>
+      </md-input-container>
 
-    <md-autocomplete #auto="mdAutocomplete">
-      <md-option *ngFor="let vrsta of filteredData | async" [value]="state">
-        {{ vrsta }}
-      </md-option>
-    </md-autocomplete>
+      <md-autocomplete #auto="mdAutocomplete">
+        <md-option *ngFor="let vrsta of filteredVrste">
+          {{ vrsta }}
+        </md-option>
+      </md-autocomplete>
+    </form>
   </div>
 </div>

@@ -1,42 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { PodatkiService } from '../shared/services/podatki.services';
+import { SpeciesService } from '../shared/services/species.service';
+import {MdAutocompleteModule} from '@angular/material';
 
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  providers: [PodatkiService]
+  providers: [SpeciesService]
 })
 export class HeaderComponent implements OnInit {
 
-  data: any[] = [];
-  dataCtrl: FormControl;
-  filteredData: any;
+  public filteredVrste: any;
+  vrstaCtrl: FormControl;
 
-  constructor(private PodatkiService: PodatkiService) {}
-
-  filterData(val: string) {
-    return val ? this.data.filter(s => new RegExp(`^${val}`, 'gi').test(s))
-      : this.data;
+  constructor(private speciesService: SpeciesService) {
+    this.vrstaCtrl = new FormControl();
+    this.filteredVrste = this.vrstaCtrl.valueChanges.subscribe(
+      (text: String) => {
+        this.filteredVrste = [];
+        this.speciesService.queryVrste(text).subscribe(
+          response => {
+            for (const vrsta of response) {
+              this.filteredVrste.push(vrsta.canonicalName);
+            }
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      });
   }
 
   ngOnInit() {
-    this.PodatkiService.getVrsta().subscribe(
-      response => {
-        for (const el of response) {
-          this.data.push(el.vrsta);
-        }
-        console.log(this.data);
-      }
-    );
-    this.dataCtrl = new FormControl();
-    this.filteredData = this.dataCtrl.valueChanges
-      .startWith(null)
-      .map(name => this.filterData(name));
+    this.filteredVrste = [];
+  }
+
+  onSubmit(f: any) {
+    f.value.kanonicno_ime = this.vrstaCtrl.value;
+    console.log(f.value);
   }
 
 }
