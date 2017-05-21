@@ -11,4 +11,9 @@ export class PodatkiService {
     return this.http.post(Config.API + 'popisi/', podatki)
       .map((res: Response) => res.json());
   }
+
+  getKvadrant(id: number) {
+    return this.http.get(Config.API + 'species/?quadrant=' + id)
+      .map((res: Response) => res.json());
+  }
 }

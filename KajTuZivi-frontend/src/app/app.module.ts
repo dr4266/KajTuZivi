@@ -17,7 +17,7 @@ import { MdDataTableModule } from 'ng2-md-datatable';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
-import { PodatkiService } from './shared/services/podatki.services'
+import { PodatkiService } from './shared/services/podatki.services';
 
 
 @NgModule({
