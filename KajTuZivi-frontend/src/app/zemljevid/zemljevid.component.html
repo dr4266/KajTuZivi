@@ -1,9 +1,15 @@
 
 <app-header></app-header>
 <sebm-google-map [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-  <div *ngFor="let path of table">
-    <sebm-map-polygon [paths]="path"></sebm-map-polygon>
+  <sebm-google-map-marker
+    [latitude]="lat"
+    [longitude]="lng"
+    ></sebm-google-map-marker>
+  <div *ngFor="let path of table; let i = index">
+    <sebm-map-polygon
+      [paths]="path"
+      (polyClick)="onMapClick(i)"
+      [fillOpacity]="0.0"></sebm-map-polygon>
   </div>
 </sebm-google-map>
 

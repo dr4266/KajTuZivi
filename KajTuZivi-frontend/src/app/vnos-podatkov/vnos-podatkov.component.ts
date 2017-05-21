@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {PodatkiService} from '../shared/services/podatki.services'
 @Component({
   selector: 'app-vnos-podatkov',
   templateUrl: './vnos-podatkov.component.html',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VnosPodatkovComponent implements OnInit {
 
-  constructor() { }
+  constructor(private podatkiService: PodatkiService) { }
 
   ngOnInit() {
   }
 
+  onSubmit(f:any){
+  	this.podatkiService.vstaviPopis(f).subscribe(
+  		response => {console.log(response)},
+  		error => {console.log(error)},
+  	)
+
+
+  }
+
 }
+
+

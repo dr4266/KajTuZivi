@@ -3,7 +3,7 @@
     <md-card-title><h2>Vnos podatkov</h2></md-card-title>
   </md-card-header>
   <md-card-content>
-    <form (ngSubmit)="onLogin(f)" #f="ngForm">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <p>
       <md-input-container class="example-full-width">
         <input
@@ -38,17 +38,21 @@
       </md-input-container>
       </p>
       <p>
-      <md-input-container class="example-full-width">
-        <input
-          mdInput
-          placeholder="Ogroženost"
-          type="text"
-          name="Ogroženost"
-          required
-          ngModel>
-      </md-input-container>
+    <md-card-title><h3>Ogroženost</h3></md-card-title>
       </p>
+      <button md-fab style="background-color:black;color:red;">EX</button>
+      <button md-fab style="background-color:black;">EW</button>
+      <button md-fab style="background-color:red;color:#FFCCCC;">CR</button>
+      <button md-fab style="background-color:orange;color:#FFCC99;">EN</button>
+      <button md-fab style="background-color:yellow;color:#FFFFCC;">VO</button>
+      <button md-fab style="background-color:green;color:#99CC99;">NT</button>
+      <button md-fab style="background-color:green;">LC</button>
+      <p>
+      </p>
+
+      <p>
       <button md-raised-button color="primary" type="submit">Dodaj</button>
+    </p>
     </form>
 
   </md-card-content>

@@ -17,6 +17,8 @@ import { MdDataTableModule } from 'ng2-md-datatable';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
+import { PodatkiService } from './shared/services/podatki.services'
+
 
 @NgModule({
   declarations: [
@@ -40,10 +42,10 @@ import { HeaderComponent } from './header/header.component';
     ReactiveFormsModule,
     MdDataTableModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAZmyKw_IRVxGmuKrbfbOrxHuGIgekjNO0'
+      apiKey: 'AIzaSyDnvjQUG-PZdsf2EcpkNT1LnQS18YCoESg'
     })
   ],
-  providers: [],
+  providers: [PodatkiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
