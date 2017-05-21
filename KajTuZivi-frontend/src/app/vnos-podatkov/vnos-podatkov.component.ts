@@ -41,7 +41,6 @@ export class VnosPodatkovComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.filteredVrste = [];
     this.loading = false;
     this.success = false;
@@ -52,6 +51,7 @@ export class VnosPodatkovComponent implements OnInit {
     this.loading = true;
     this.success = false;
     this.error = null;
+
     f.value.kanonicno_ime = this.vrstaCtrl.value;
     f.value.biolog = parseInt(f.value.biolog);
 

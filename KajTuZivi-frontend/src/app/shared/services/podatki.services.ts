@@ -12,6 +12,11 @@ export class PodatkiService {
       .map((res: Response) => res.json());
   }
 
+  getBiologe() {
+    return this.http.get(Config.API + 'uporabniki/')
+      .map((res: Response) => res.json())
+  }
+
   getKvadrant(id: number) {
     return this.http.get(Config.API + 'popisi?quadrant=' + id)
       .map((res: Response) => res.json());
