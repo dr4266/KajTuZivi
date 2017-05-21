@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral } from 'angular2-google-maps/core';
 import { PodatkiService } from '../shared/services/podatki.services';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-zemljevid',
@@ -9,7 +10,7 @@ import { PodatkiService } from '../shared/services/podatki.services';
   providers: [PodatkiService]
 })
 export class ZemljevidComponent implements OnInit {
-
+ @ViewChild(HeaderComponent) header: HeaderComponent;
   lat = 45.344760;
   lng = 13.414000;
   public table: any[] = [];
@@ -52,6 +53,7 @@ export class ZemljevidComponent implements OnInit {
   }
 
   onMapClick(id: number) {
+    console.log(this.header)
     this.kvadrant = id;
     this.prikaziKvadrant = true;
     this.PodatkiService.getKvadrant(id).subscribe(
