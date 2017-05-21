@@ -67,4 +67,8 @@ export class ZemljevidComponent implements OnInit {
       }
     );
   }
+
+  onVnesi() {
+    this.PodatkiService.setKvadrant(this.kvadrant);
+  }
 }

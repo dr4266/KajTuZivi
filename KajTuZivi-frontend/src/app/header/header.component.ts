@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SpeciesService } from '../shared/services/species.service';
 import {MdAutocompleteModule} from '@angular/material';
+import { PodatkiService } from '../shared/services/podatki.services';
 
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
-
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  providers: [SpeciesService]
+  providers: [SpeciesService, PodatkiService]
 })
 export class HeaderComponent implements OnInit {
 
   public filteredVrste: any;
   vrstaCtrl: FormControl;
+  public vrsta: any;
 
-  constructor(private speciesService: SpeciesService) {
+  constructor(private speciesService: SpeciesService, private PodatkiService: PodatkiService) {
     this.vrstaCtrl = new FormControl();
     this.filteredVrste = this.vrstaCtrl.valueChanges.subscribe(
       (text: String) => {
@@ -41,8 +42,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmit(f: any) {
-    f.value.kanonicno_ime = this.vrstaCtrl.value;
-    console.log(f.value);
+    console.log('test' + this.vrstaCtrl.value);
   }
 
 }
