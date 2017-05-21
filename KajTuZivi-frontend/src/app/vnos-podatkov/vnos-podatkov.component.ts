@@ -29,7 +29,7 @@ export class VnosPodatkovComponent implements OnInit {
           response => {
             // console.log(response);
             for (const vrsta of response) {
-              this.filteredVrste.push(vrsta.canonicalName);
+              this.filteredVrste.push(vrsta.species);
             }
           },
           error => {
