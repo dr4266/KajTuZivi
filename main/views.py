@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
 from main.models import *
@@ -30,8 +31,6 @@ class KvadrantViewSet(viewsets.ReadOnlyModelViewSet):
 
 class PopisViewSet(viewsets.ModelViewSet):
     """Viewset za kreacijo in pridobitev popisa vrst"""
-
-    queryset = PopisZivali.objects.all()
 
     def get_serializer_class(self):
 
@@ -107,3 +106,46 @@ class PopisViewSet(viewsets.ModelViewSet):
 
         serializiran_popis = PopisZivaliSerializer(popis)
         return Response(serializiran_popis.data)
+
+    def get_queryset(self):
+        queryset = PopisZivali.objects.all()
+        kvadrant = self.request.query_params.get('quadrant', None)
+        if kvadrant is not None:
+            queryset = PopisZivali.objects.filter(kvadrant=kvadrant)
+
+        vrsta = self.request.query_params.get('species', None)
+        if vrsta is not None:
+            queryset = queryset.filter(vrsta=vrsta)
+
+        rod = self.request.query_params.get('genus', None)
+        if rod is not None:
+            queryset = queryset.filter(rod=rod)
+
+        druzina = self.request.query_params.get('family', None)
+        if druzina is not None:
+            queryset = queryset.filter(druzina=druzina)
+
+        red = self.request.query_params.get('order', None)
+        if red is not None:
+            queryset = queryset.filter(red=red)
+
+        deblo = self.request.query_params.get('phylum', None)
+        if deblo is not None:
+            queryset = queryset.filter(deblo=deblo)
+
+        kraljestvo = self.request.query_params.get('kingdom', None)
+        if kraljestvo is not None:
+            queryset = queryset.filter(kraljestvo=kraljestvo)
+
+        query = self.request.query_params.get('q', None)
+        if query is not None:
+            queryset = PopisZivali.objects.filter(
+                Q(vrsta__icontains=query) |
+                Q(rod__icontains=query) |
+                Q(druzina__icontains=query) |
+                Q(red__icontains=query) |
+                Q(deblo__icontains=query) |
+                Q(kraljestvo__icontains=query) |
+                Q(razred__icontains=query)
+            )
+        return queryset
