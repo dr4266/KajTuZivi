@@ -7,7 +7,7 @@ import {PodatkiService} from '../shared/services/podatki.services'
 })
 export class VnosPodatkovComponent implements OnInit {
 
-  constructor(private podatkiService:PodatkiService) { }
+  constructor(private podatkiService: PodatkiService) { }
 
   ngOnInit() {
   }
@@ -17,7 +17,7 @@ export class VnosPodatkovComponent implements OnInit {
   		response => {console.log(response)},
   		error => {console.log(error)},
   	)
-  
+
 
   }
 
