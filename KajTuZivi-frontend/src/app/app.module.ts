@@ -40,7 +40,7 @@ import { HeaderComponent } from './header/header.component';
     ReactiveFormsModule,
     MdDataTableModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBmu0956wWjk0CV6fMzVNvcceqE13bjgiY'
+      apiKey: 'AIzaSyAZmyKw_IRVxGmuKrbfbOrxHuGIgekjNO0'
     })
   ],
   providers: [],
