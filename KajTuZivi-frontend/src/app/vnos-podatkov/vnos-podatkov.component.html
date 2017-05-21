@@ -6,7 +6,7 @@
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <p>
         <md-input-container class="example-full-width">
-          <input mdInput placeholder="Ime vrste" [mdAutocomplete]="auto" [formControl]="vrstaCtrl" ngModel name="kanonicno_ime" ngDefaultControl>
+          <input mdInput placeholder="Ime vrste" [mdAutocomplete]="auto" [formControl]="vrstaCtrl" required>
         </md-input-container>
 
         <md-autocomplete #auto="mdAutocomplete" >
