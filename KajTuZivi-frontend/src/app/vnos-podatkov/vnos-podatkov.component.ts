@@ -3,6 +3,7 @@ import { FormControl} from '@angular/forms';
 import {PodatkiService} from '../shared/services/podatki.services';
 import {MdAutocompleteModule} from '@angular/material';
 import { SpeciesService } from '../shared/services/species.service';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-vnos-podatkov',
@@ -21,7 +22,8 @@ export class VnosPodatkovComponent implements OnInit {
   public kvadrant: any;
 
   constructor(private podatkiService: PodatkiService,
-              private speciesService: SpeciesService) {
+              private speciesService: SpeciesService,
+              private route: ActivatedRoute) {
     this.vrstaCtrl = new FormControl();
     this.filteredVrste = this.vrstaCtrl.valueChanges.subscribe(
       (text: String) => {
@@ -46,6 +48,10 @@ export class VnosPodatkovComponent implements OnInit {
     this.loading = false;
     this.success = false;
     this.error = null;
+
+    this.route.params.subscribe((params: Params) => {
+      this.kvadrant = params['kvadrant'];
+    });
   }
 
   onSubmit(f: any) {
@@ -54,6 +60,7 @@ export class VnosPodatkovComponent implements OnInit {
     this.error = null;
 
     f.value.kanonicno_ime = this.vrstaCtrl.value;
+    f.value.kvadrant = this.kvadrant;
 
   	this.podatkiService.vstaviPopis(f.value).subscribe(
   		response => {

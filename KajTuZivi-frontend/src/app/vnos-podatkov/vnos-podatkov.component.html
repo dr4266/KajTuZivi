@@ -30,11 +30,12 @@
         <md-input-container class="example-full-width">
           <input
           mdInput
-          placeholder="Kvadrant"
           type="number"
           name="kvadrant"
-          required
-          ngModel>
+          placeholder="Kvadrant"
+          [value]="kvadrant"
+          disabled
+          ngModel>{{ kvadrant }}
         </md-input-container>
       </p>
       <p>

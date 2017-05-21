@@ -24,7 +24,7 @@
     <p >Izbrani kvadrant je {{ kvadrant }}</p>
   </div>
   <div class="col-md-2">
-    <button md-raised-button routerLink="/data/input" (click)="onVnesi()">Vnesi podatke</button>
+    <button md-raised-button [routerLink]="['/data/input/', kvadrant]">Vnesi podatke</button>
   </div>
 </div>
 

@@ -6,7 +6,7 @@ import { VnosPodatkovComponent } from './vnos-podatkov/vnos-podatkov.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'dashboard', component: ZemljevidComponent },
-  { path: 'data/input', component: VnosPodatkovComponent },
+  { path: 'data/input/:kvadrant', component: VnosPodatkovComponent },
 ];
 
 @NgModule({

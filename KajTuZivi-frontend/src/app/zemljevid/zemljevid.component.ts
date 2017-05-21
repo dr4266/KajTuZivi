@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral } from 'angular2-google-maps/core';
 import { PodatkiService } from '../shared/services/podatki.services';
+import {ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-zemljevid',
@@ -27,7 +28,7 @@ export class ZemljevidComponent implements OnInit {
   spremembaY = 0;
   spremembaX = 0.09;
 
-  constructor(private PodatkiService: PodatkiService) {}
+  constructor(private PodatkiService: PodatkiService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -67,6 +68,6 @@ export class ZemljevidComponent implements OnInit {
   }
 
   onVnesi() {
-    this.PodatkiService.setKvadrant(this.kvadrant);
+    this.router.navigate(['data/input/'], {relativeTo: this.route});
   }
 }
