@@ -67,7 +67,7 @@ class PopisViewSet(viewsets.ModelViewSet):
         podatki_popisa = requests.get('http://api.gbif.org/v1/species/suggest?q=' + request.data['kanonicno_ime'])
         podatki_popisa_json = podatki_popisa.json()
         if len(podatki_popisa_json) == 0:
-            content = {'message': 'Ne najdem primerka s tem kanoničnim imenom'}
+            content = {'message': 'Ne najdem primerka s tem imenom vrste'}
             return Response(content, status=status.HTTP_404_NOT_FOUND)
 
         request.data['vrsta'] = podatki_popisa_json[0]['species']

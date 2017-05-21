@@ -18,6 +18,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { PodatkiService } from './shared/services/podatki.services';
+import { SpeciesService } from './shared/services/species.service';
 
 
 @NgModule({
@@ -45,7 +46,7 @@ import { PodatkiService } from './shared/services/podatki.services';
       apiKey: 'AIzaSyDnvjQUG-PZdsf2EcpkNT1LnQS18YCoESg'
     })
   ],
-  providers: [PodatkiService],
+  providers: [PodatkiService, SpeciesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
