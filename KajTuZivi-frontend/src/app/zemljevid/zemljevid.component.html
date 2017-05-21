@@ -1,12 +1,10 @@
 <app-header></app-header>
 <sebm-google-map [latitude]="lat" [longitude]="lng">
   <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+  <div *ngFor="let path of table">
+    <sebm-map-polygon [paths]="path"></sebm-map-polygon>
+  </div>
 </sebm-google-map>
-
-<!--<semb-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">-->
-  <!--<semb-map-polygon [paths]="paths">-->
-  <!--</semb-map-polygon>-->
-<!--</semb-google-map>-->
 
 <app-kvadrant-podrobno></app-kvadrant-podrobno>
 <app-vrste-podrobno></app-vrste-podrobno>
