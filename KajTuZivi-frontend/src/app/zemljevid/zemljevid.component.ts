@@ -1,8 +1,5 @@
-import {Component, ElementRef, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral } from 'angular2-google-maps/core';
-
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/map';
 import { PodatkiService } from '../shared/services/podatki.services';
 
 @Component({
@@ -22,6 +19,10 @@ export class ZemljevidComponent implements OnInit {
   lng2 = 13.544000;
 
   kvadrantPodatki: any;
+  prikaziKvadrantPodatki = false;
+  prikaziVrstePodrobno = false;
+  prikaziKvadrant = false;
+  kvadrant: number;
 
   spremembaY = 0;
   spremembaX = 0.09;
@@ -51,11 +52,17 @@ export class ZemljevidComponent implements OnInit {
   }
 
   onMapClick(id: number) {
+    this.kvadrant = id;
+    this.prikaziKvadrant = true;
     this.PodatkiService.getKvadrant(id).subscribe(
       response => {
         this.kvadrantPodatki = response;
+        if (response.length === 0) {
+          this.prikaziKvadrantPodatki = false;
+        } else {
+          this.prikaziKvadrantPodatki = true;
+        }
       }
     );
-    console.log(this.kvadrantPodatki);
   }
 }

@@ -7,11 +7,28 @@
     ></sebm-google-map-marker>
   <div *ngFor="let path of table; let i = index">
     <sebm-map-polygon
+      *ngIf="!(i == kvadrant)"
       [paths]="path"
       (polyClick)="onMapClick(i)"
       [fillOpacity]="0.0"></sebm-map-polygon>
+    <sebm-map-polygon
+      *ngIf="i == kvadrant"
+      [paths]="path"
+      (polyClick)="onMapClick(i)"
+      [fillOpacity]="0.5"></sebm-map-polygon>
   </div>
 </sebm-google-map>
 
-<app-kvadrant-podrobno></app-kvadrant-podrobno>
-<app-vrste-podrobno></app-vrste-podrobno>
+<div *ngIf="prikaziKvadrant" class="col-xs-7" style="margin-top: 20px; margin-bottom: 20px;">
+  <div class="col-md-5">
+    <p >Izbrani kvadrant je {{ kvadrant }}</p>
+  </div>
+  <div class="col-md-2">
+    <button md-raised-button routerLink="/data/input">Vnesi podatke</button>
+  </div>
+</div>
+
+<app-kvadrant-podrobno
+  [kvadrantPodatki]="kvadrantPodatki"
+  *ngIf="prikaziKvadrantPodatki"></app-kvadrant-podrobno>
+<app-vrste-podrobno *ngIf="prikaziVrstePodrobno"></app-vrste-podrobno>
