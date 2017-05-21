@@ -5,54 +5,64 @@
   <md-card-content>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <p>
-      <md-input-container class="example-full-width">
-        <input
-          mdInput
-          placeholder="Kanonično ime"
-          type="text"
-          name="Kanonično ime"
-          required
-          ngModel>
-      </md-input-container>
+        <md-input-container class="example-full-width">
+          <input mdInput placeholder="Ime vrste" [mdAutocomplete]="auto" [formControl]="vrstaCtrl" ngModel name="kanonicno_ime" ngDefaultControl>
+        </md-input-container>
+
+        <md-autocomplete #auto="mdAutocomplete" >
+          <md-option *ngFor="let vrsta of filteredVrste" [value]="vrsta">
+            {{ vrsta }}
+          </md-option>
+        </md-autocomplete>
       </p>
       <p>
-      <md-input-container class="example-full-width">
-        <input
+        <md-input-container class="example-full-width">
+          <input
+          mdInput
+          placeholder="Količina primerkov"
+          type="number"
+          name="kolicina"
+          required
+          ngModel>
+        </md-input-container>
+      </p>
+      <p>
+        <md-input-container class="example-full-width">
+          <input
           mdInput
           placeholder="Kvadrant"
-          type="text"
-          name="Kvadrant"
+          type="number"
+          name="kvadrant"
           required
           ngModel>
-      </md-input-container>
+        </md-input-container>
       </p>
       <p>
-      <md-input-container class="example-full-width">
-        <input
+        <md-input-container class="example-full-width">
+          <input
           mdInput
           placeholder="Biolog"
           type="text"
-          name="Biolog"
+          name="biolog"
           required
           ngModel>
-      </md-input-container>
+        </md-input-container>
       </p>
       <p>
-    <md-card-title><h3>Ogroženost</h3></md-card-title>
-      </p>
-      <button md-fab style="background-color:black;color:red;">EX</button>
-      <button md-fab style="background-color:black;">EW</button>
-      <button md-fab style="background-color:red;color:#FFCCCC;">CR</button>
-      <button md-fab style="background-color:orange;color:#FFCC99;">EN</button>
-      <button md-fab style="background-color:yellow;color:#FFFFCC;">VO</button>
-      <button md-fab style="background-color:green;color:#99CC99;">NT</button>
-      <button md-fab style="background-color:green;">LC</button>
-      <p>
+      <md-select placeholder="Stopnja ogroženosti" ngModel name="ogrozenost" required class="example-full-width"> 
+        <md-option *ngFor="let iucn of iucns" [value]='iucn'>
+          {{iucn}}
+        </md-option>
+      </md-select>
       </p>
 
-      <p>
-      <button md-raised-button color="primary" type="submit">Dodaj</button>
-    </p>
+        <button md-raised-button color="primary" [disabled]='f.invalid || loading' type="submit">Dodaj</button>
+        <div>
+          <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+          <small class='text-success' *ngIf='success'>Uspešno ste dodali nov popis primerka</small>
+          <small class='text-danger' *ngIf='error'>{{error}}</small>
+        </div>
+
     </form>
 
   </md-card-content>
