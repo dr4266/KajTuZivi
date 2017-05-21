@@ -42,8 +42,8 @@ export class ZemljevidComponent implements OnInit {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
     });
-    console.log(this.vrstePodrobno)
-    console.log(this.header)
+    //console.log(this.vrstePodrobno)
+    //console.log(this.header)
     //this.vrstePodrobnoData = this.vrstePodrobno.data
     this.headerCtrl = this.header.vrstaCtrl;
     this.headerCtrl.valueChanges.subscribe(
@@ -51,13 +51,13 @@ export class ZemljevidComponent implements OnInit {
         this.podatkiService.getVrstaIme(text).subscribe(
           response => {
             if (response != '' || response.length >  0) {
-              console.log('not')
+              //console.log('not')
               this.prikaziVrstePodrobno = true;
               this.vrstePodrobnoData = response;
               //this.vrstePodrobno.data = this.vrstePodrobnoData
             }
 
-            console.log(this.vrstePodrobno)
+            //console.log(this.vrstePodrobno)
           }, error => {
             console.log(error);
           }
