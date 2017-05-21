@@ -10,6 +10,8 @@
       <th>kraljestvo</th>
       <th>ogroženost</th>
       <th>količina</th>
+      <th>biolog</th>
+      <th>datum</th>
     </tr>
       <tr *ngFor="let element of kvadrantPodatki">
         <td>{{ element?.vrsta }}</td>
@@ -20,6 +22,8 @@
         <td>{{ element?.kraljestvo }}</td>
         <td>{{ element?.ogrozenost }}</td>
         <td>{{ element?.kolicina }}</td>
+        <td>{{ element?.biolog }}</td>
+        <td>{{ element?.datum_popisa | date}}</td>
       </tr>
 
   </table>

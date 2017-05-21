@@ -1,18 +1,31 @@
 <div class="panel panel-default" (recipeSelected)="onSelected()" style="margin-top: 80px;">
-  <div class="panel-heading">Panel heading</div>
+  <div class="panel-heading">Podatki o vrsti</div>
   <table class="table">
     <tr>
       <th>vrsta</th>
+      <th>red</th>
       <th>družina</th>
+      <th>razred</th>
       <th>deblo</th>
       <th>kraljestvo</th>
       <th>ogroženost</th>
+      <th>količina</th>
+      <th>biolog</th>
+      <th>datum</th>
       <th>kvadrant</th>
     </tr>
-    <tr>
-      <div *ngFor="let element of data">
-        <td>element.vrsta</td>
-      </div>
+    <tr *ngFor="let element of data">
+        <td>{{ element?.vrsta }}</td>
+        <td>{{ element?.red }}</td>
+        <td>{{ element?.druzina }}</td>
+        <td>{{ element?.razred }}</td>
+        <td>{{ element?.deblo }}</td>
+        <td>{{ element?.kraljestvo }}</td>
+        <td>{{ element?.ogrozenost }}</td>
+        <td>{{ element?.kolicina }}</td>
+        <td>{{ element?.biolog }}</td>
+        <td>{{ element?.datum_popisa | date}}</td>
+        <td>{{ element?.kvadrant }}</td>
     </tr>
   </table>
 </div>
