@@ -11,4 +11,9 @@ export class PodatkiService {
     return this.http.post(Config.API + 'popisi/', podatki)
       .map((res: Response) => res.json());
   }
+
+  getBiologe() {
+    return this.http.get(Config.API + 'uporabniki/')
+      .map((res: Response) => res.json())
+  }
 }

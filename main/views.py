@@ -41,12 +41,12 @@ class PopisViewSet(viewsets.ModelViewSet):
         if 'biolog' not in request.data.keys():
             content = {'message': 'Biolog, ki je popis kreiral je obvezen podatek'}
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
-        else:
+        '''else:
             try:
                 biolog = Biolog.objects.get(pk=request.data['biolog'])
             except Biolog.DoesNotExist:
                 content = {'message': 'Ta biolog ne obstaja'}
-                return Response(content, status=status.HTTP_404_NOT_FOUND)
+                return Response(content, status=status.HTTP_404_NOT_FOUND)'''
 
         if 'kanonicno_ime' not in request.data.keys():
             content = {'message': 'Kanonično ime je obvezen podatek'}

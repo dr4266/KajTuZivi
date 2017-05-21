@@ -31,7 +31,6 @@ export class VnosPodatkovComponent implements OnInit {
             for (let vrsta of response) {
               this.filteredVrste.push(vrsta.canonicalName)
             }
-
           },
           error => {
             console.log(error)
@@ -43,19 +42,17 @@ export class VnosPodatkovComponent implements OnInit {
 
 
   ngOnInit() {
-
     this.filteredVrste = [];
     this.loading = false;
     this.success = false;
     this.error = null;
-    }
+  }
 
   onSubmit(f:any){
     this.loading = true;
     this.success = false;
     this.error = null;
     f.value.kanonicno_ime = this.vrstaCtrl.value
-    f.value.biolog = parseInt(f.value.biolog)
 
   	this.podatkiService.vstaviPopis(f.value).subscribe(
   		response => {

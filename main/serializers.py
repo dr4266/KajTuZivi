@@ -50,10 +50,10 @@ class PopisZivaliCreateSerializer(serializers.ModelSerializer):
 class PopisZivaliSerializer(serializers.ModelSerializer):
     '''Serilizacija vnesene zivali'''
     ogrozenost = OgrozenostSerializer
-    biolog = serializers.PrimaryKeyRelatedField(queryset=Biolog.objects.all())
+
 
     def create(self, validated_data):
-        print(validated_data)
+        #print(validated_data)
         popis = PopisZivali(
             kanonicno_ime=validated_data['kanonicno_ime'],
             kolicina=validated_data['kolicina'],

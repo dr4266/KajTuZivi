@@ -32,5 +32,5 @@ class PopisZivali(models.Model):
     ogrozenost = models.CharField(max_length=2)
     kvadrant = models.CharField(max_length=10)
     kolicina = models.IntegerField(blank=True)
-    biolog = models.ForeignKey(Biolog, on_delete=models.CASCADE)
+    biolog = models.CharField(max_length=50)
     datum_popisa = models.DateField()
