@@ -1,19 +1,13 @@
-<div class="col-xs-12">
-  <div class="col-md-6">
-    <h1>Kaj tu živi</h1>
-  </div>
-  <div class="col-md-6 search">
-    <md-input-container>
-      <input mdInput placeholder="Iskanje..." [mdAutocomplete]="auto" [formControl]="stateCtrl">
-    </md-input-container>
-    <md-autocomplete #auto="mdAutocomplete">
-      <md-option *ngFor="let state of filteredStates | async" [value]="state">
-        {{ state }}
-      </md-option>
-    </md-autocomplete>
-  </div>
-</div>
-<iframe
- width="1000" height="600" frameborder="0" style="border:0"
- src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJYYOWXuckZUcRZdTiJR5FQOc&key=AIzaSyCenChTJmcIqew_UGbYQm7PXosuUHTuiOo" allowfullscreen>
-</iframe>
+
+<app-header></app-header>
+<sebm-google-map [latitude]="lat" [longitude]="lng">
+  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+</sebm-google-map>
+
+<!--<semb-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">-->
+  <!--<semb-map-polygon [paths]="paths">-->
+  <!--</semb-map-polygon>-->
+<!--</semb-google-map>-->
+
+<app-kvadrant-podrobno></app-kvadrant-podrobno>
+<app-vrste-podrobno></app-vrste-podrobno>

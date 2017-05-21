@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-kvadrant-podrobno',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./kvadrant-podrobno.component.css']
 })
 export class KvadrantPodrobnoComponent implements OnInit {
+  elements: any = ['test1', 'test2', 'test3'];
 
   constructor() { }
 

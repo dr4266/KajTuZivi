@@ -1,3 +1,55 @@
-<p>
-  vnos-podatkov works!
-</p>
+<md-card class="login-card">
+  <md-card-header>
+    <md-card-title><h2>Vnos podatkov</h2></md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <form (ngSubmit)="onLogin(f)" #f="ngForm">
+      <p>
+      <md-input-container class="example-full-width">
+        <input
+          mdInput
+          placeholder="Kanonično ime"
+          type="text"
+          name="Kanonično ime"
+          required
+          ngModel>
+      </md-input-container>
+      </p>
+      <p>
+      <md-input-container class="example-full-width">
+        <input
+          mdInput
+          placeholder="Kvadrant"
+          type="text"
+          name="Kvadrant"
+          required
+          ngModel>
+      </md-input-container>
+      </p>
+      <p>
+      <md-input-container class="example-full-width">
+        <input
+          mdInput
+          placeholder="Biolog"
+          type="text"
+          name="Biolog"
+          required
+          ngModel>
+      </md-input-container>
+      </p>
+      <p>
+      <md-input-container class="example-full-width">
+        <input
+          mdInput
+          placeholder="Ogroženost"
+          type="text"
+          name="Ogroženost"
+          required
+          ngModel>
+      </md-input-container>
+      </p>
+      <button md-raised-button color="primary" type="submit">Dodaj</button>
+    </form>
+
+  </md-card-content>
+</md-card>
