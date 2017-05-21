@@ -29,7 +29,7 @@ class PopisZivali(models.Model):
     vrsta = models.CharField(max_length=60, blank=True)
     kanonicno_ime = models.CharField(blank=True, max_length=60)
     znanstveno_ime = models.CharField(blank=True, max_length=120)
-    ogrozenost = models.ForeignKey(Ogrozenost, on_delete=models.CASCADE)
+    ogrozenost = models.CharField(max_length=2)
     kvadrant = models.CharField(max_length=10)
     kolicina = models.IntegerField(blank=True)
     biolog = models.ForeignKey(Biolog, on_delete=models.CASCADE)
