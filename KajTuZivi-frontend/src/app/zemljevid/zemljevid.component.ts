@@ -1,26 +1,33 @@
-import {Component, ElementRef, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral } from 'angular2-google-maps/core';
-
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/map';
+import { PodatkiService } from '../shared/services/podatki.services';
 
 @Component({
   selector: 'app-zemljevid',
   templateUrl: './zemljevid.component.html',
-  styleUrls: ['./zemljevid.component.css']
+  styleUrls: ['./zemljevid.component.css'],
+  providers: [PodatkiService]
 })
 export class ZemljevidComponent implements OnInit {
 
-  lat = 45.244760;
-  lng = 13.275901;
+  lat = 45.344760;
+  lng = 13.414000;
   public table: any[] = [];
   lat1 = 45.344760;
   lat2 = 45.434760;
   lng1 = 13.414000;
   lng2 = 13.544000;
 
+  kvadrantPodatki: any;
+  prikaziKvadrantPodatki = false;
+  prikaziVrstePodrobno = false;
+  prikaziKvadrant = false;
+  kvadrant: number;
+
   spremembaY = 0;
   spremembaX = 0.09;
+
+  constructor(private PodatkiService: PodatkiService) {}
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -29,7 +36,7 @@ export class ZemljevidComponent implements OnInit {
     });
     for (let i = 0; i < 17; i++) {
       for (let j = 0; j < 25; j++) {
-        let paths: Array<LatLngLiteral> = [
+        const paths: Array<LatLngLiteral> = [
           {lat: this.lat1, lng: this.lng1 + this.spremembaY},
           {lat: this.lat1, lng: this.lng2 + this.spremembaY},
           {lat: this.lat2, lng: this.lng2 + this.spremembaY},
@@ -44,7 +51,18 @@ export class ZemljevidComponent implements OnInit {
     }
   }
 
-  onMapClick(num: string) {
-    console.log(num);
+  onMapClick(id: number) {
+    this.kvadrant = id;
+    this.prikaziKvadrant = true;
+    this.PodatkiService.getKvadrant(id).subscribe(
+      response => {
+        this.kvadrantPodatki = response;
+        if (response.length === 0) {
+          this.prikaziKvadrantPodatki = false;
+        } else {
+          this.prikaziKvadrantPodatki = true;
+        }
+      }
+    );
   }
 }

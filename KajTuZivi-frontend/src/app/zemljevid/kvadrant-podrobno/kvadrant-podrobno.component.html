@@ -1,17 +1,26 @@
-<div class="panel panel-default">
-  <div class="panel-heading">Panel heading</div>
+<div class="panel panel-default" style="margin-top: 80px;">
+  <div class="panel-heading">Podatki o kvadrantu</div>
   <table class="table">
     <tr>
       <th>vrsta</th>
+      <th>red</th>
       <th>družina</th>
+      <th>razred</th>
       <th>deblo</th>
       <th>kraljestvo</th>
       <th>ogroženost</th>
+      <th>količina</th>
     </tr>
-    <tr>
-      <div *ngFor="let element of elements">
-        <td></td>
-      </div>
-    </tr>
+      <tr *ngFor="let element of kvadrantPodatki">
+        <td>{{ element?.vrsta }}</td>
+        <td>{{ element?.red }}</td>
+        <td>{{ element?.druzina }}</td>
+        <td>{{ element?.razred }}</td>
+        <td>{{ element?.deblo }}</td>
+        <td>{{ element?.kraljestvo }}</td>
+        <td>{{ element?.ogrozenost }}</td>
+        <td>{{ element?.kolicina }}</td>
+      </tr>
+
   </table>
 </div>

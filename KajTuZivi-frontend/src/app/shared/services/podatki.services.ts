@@ -16,4 +16,14 @@ export class PodatkiService {
     return this.http.get(Config.API + 'uporabniki/')
       .map((res: Response) => res.json())
   }
+
+  getKvadrant(id: number) {
+    return this.http.get(Config.API + 'popisi?quadrant=' + id)
+      .map((res: Response) => res.json());
+  }
+
+  getVrsta() {
+    return this.http.get(Config.API + 'popisi')
+      .map((res: Response) => res.json());
+  }
 }

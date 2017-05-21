@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { PodatkiService } from '../shared/services/podatki.services';
 
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
@@ -7,78 +8,35 @@ import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  providers: [PodatkiService]
 })
 export class HeaderComponent implements OnInit {
-  stateCtrl: FormControl;
-  filteredStates: any;
 
-  states = [
-    'Alabama',
-    'Alaska',
-    'Arizona',
-    'Arkansas',
-    'California',
-    'Colorado',
-    'Connecticut',
-    'Delaware',
-    'Florida',
-    'Georgia',
-    'Hawaii',
-    'Idaho',
-    'Illinois',
-    'Indiana',
-    'Iowa',
-    'Kansas',
-    'Kentucky',
-    'Louisiana',
-    'Maine',
-    'Maryland',
-    'Massachusetts',
-    'Michigan',
-    'Minnesota',
-    'Mississippi',
-    'Missouri',
-    'Montana',
-    'Nebraska',
-    'Nevada',
-    'New Hampshire',
-    'New Jersey',
-    'New Mexico',
-    'New York',
-    'North Carolina',
-    'North Dakota',
-    'Ohio',
-    'Oklahoma',
-    'Oregon',
-    'Pennsylvania',
-    'Rhode Island',
-    'South Carolina',
-    'South Dakota',
-    'Tennessee',
-    'Texas',
-    'Utah',
-    'Vermont',
-    'Virginia',
-    'Washington',
-    'West Virginia',
-    'Wisconsin',
-    'Wyoming',
-  ];
+  data: any[] = [];
+  dataCtrl: FormControl;
+  filteredData: any;
 
-  constructor() {
-    this.stateCtrl = new FormControl();
-    this.filteredStates = this.stateCtrl.valueChanges
-      .startWith(null)
-      .map(name => this.filterStates(name));
-  }
+  constructor(private PodatkiService: PodatkiService) {}
 
-  filterStates(val: string) {
-    return val ? this.states.filter(s => new RegExp(`^${val}`, 'gi').test(s))
-      : this.states;
+  filterData(val: string) {
+    return val ? this.data.filter(s => new RegExp(`^${val}`, 'gi').test(s))
+      : this.data;
   }
 
   ngOnInit() {
+    this.PodatkiService.getVrsta().subscribe(
+      response => {
+        for (const el of response) {
+          this.data.push(el.vrsta);
+        }
+        console.log(this.data);
+      }
+    );
+    this.dataCtrl = new FormControl();
+    this.filteredData = this.dataCtrl.valueChanges
+      .startWith(null)
+      .map(name => this.filterData(name));
   }
 
 }
