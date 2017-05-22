@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/v1/', include('main.urls')),
     url(r'^docs/', schema_view, name='docs'),
-    
+    #Registracija
+     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
 ]

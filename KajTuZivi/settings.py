@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
     'corsheaders',
+    #Registracija
+    'oauth2_provider',
+    'social_django',
+    'rest_framework_social_oauth2',
     # Nasi apps
     'main'
 ]
@@ -71,6 +75,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #Registracija
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
